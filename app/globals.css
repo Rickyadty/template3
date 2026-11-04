@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-cormorant), Cormorant Garamond, Georgia, serif;
+  --font-sans: var(--font-jakarta), Plus Jakarta Sans, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-brand-black: #0a0a0c;
+  --color-brand-dark: #111114;
+  --color-brand-surface: #16161a;
+  --color-brand-card: #1c1c22;
+  --color-brand-cream: #f6f3ed;
+  --color-brand-cream-muted: #c5bfb4;
+  --color-brand-accent-green: #1b2a22;
+  --color-brand-accent-green-light: #263a30;
+  --color-brand-accent-plum: #27161c;
+  --color-brand-accent-plum-card: #381f28;
+  --color-brand-gold: #d4af37;
+  --color-brand-border: #2a2a32;
+  --color-brand-border-light: #3a3a46;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0a0a0c;
+  --foreground: #f6f3ed;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.font-editorial {
+  font-family: var(--font-cormorant), Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+.tracking-luxury {
+  letter-spacing: 0.18em;
+}
+
+.tracking-editorial {
+  letter-spacing: 0.05em;
+}
+
+.bg-chandelier-pattern {
+  background-image: 
+    radial-gradient(circle at 75% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 20% 45%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+}
+
+.glass-phone {
+  background: rgba(18, 18, 22, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.9), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-subtle {
+  background: rgba(26, 26, 32, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.architectural-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+}
+
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Luxury hover link underline animation */
+.hover-luxury-link {
+  position: relative;
+  display: inline-block;
+}
+.hover-luxury-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hover-luxury-link:hover::after {
+  width: 100%;
 }
